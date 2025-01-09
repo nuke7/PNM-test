@@ -20,11 +20,11 @@ export const FilterSection = ({
   onIndustryChange,
 }: FilterSectionProps) => {
   return (
-    <div className="flex gap-4 mb-6">
+    <div className="flex gap-4 mb-6 md:col-span-2">
       <div className="w-64">
         <Listbox value={selectedLocation} onChange={onLocationChange}>
           <div className="relative">
-            <ListboxButton className="w-full bg-white border border-gray-300 rounded-md py-2 px-3 text-left">
+            <ListboxButton className="w-full bg-white text-gray-900 border border-gray-300 rounded-md py-2 px-3 text-left">
               {selectedLocation || "Select Location"}
             </ListboxButton>
             <Transition
@@ -39,7 +39,7 @@ export const FilterSection = ({
                     <div
                       className={`${
                         selected ? "bg-blue-500 text-white" : "text-gray-900"	
-                      } cursor-pointer select-none relative py-2 px-3`}
+                      } cursor-pointer select-none relative py-2 px-3 hover:bg-blue-300`}
                     >
                       All Locations
                     </div>
@@ -51,7 +51,7 @@ export const FilterSection = ({
                       <div
                         className={`${
                           selected ? "bg-blue-500 text-white" : "text-gray-900"
-                        } cursor-pointer select-none relative py-2 px-3`}
+                        } cursor-pointer select-none relative py-2 px-3 hover:bg-blue-300`}
                       >
                         {location}
                       </div>
@@ -67,8 +67,8 @@ export const FilterSection = ({
       <div className="w-64">
         <Listbox value={selectedIndustry} onChange={onIndustryChange}>
           <div className="relative">
-            <ListboxButton className="w-full bg-white border border-gray-300 rounded-md py-2 px-3 text-left">
-              {selectedIndustry || "Select Industry"}
+            <ListboxButton className="w-full bg-white border border-gray-300 rounded-md py-2 px-3 text-left text-gray-900">
+              {selectedIndustry.replace("&amp;", "&") || "Select Industry"}
             </ListboxButton>
             <Transition
               as={Fragment}
@@ -82,7 +82,7 @@ export const FilterSection = ({
                     <div
                       className={`${
                         selected ? "bg-blue-500 text-white" : "text-gray-900"
-                      } cursor-pointer select-none relative py-2 px-3`}
+                      } cursor-pointer select-none relative py-2 px-3 hover:bg-blue-300`}
                     >
                       All Industries
                     </div>
@@ -94,9 +94,9 @@ export const FilterSection = ({
                       <div
                         className={`${
                           selected ? "bg-blue-500 text-white" : "text-gray-900"
-                        } cursor-pointer select-none relative py-2 px-3`}
+                        } cursor-pointer select-none relative py-2 px-3 hover:bg-blue-300`}
                       >
-                        {industry}
+                        {industry.replace("&amp;", "&")}
                       </div>
                     )}
                   </ListboxOption>

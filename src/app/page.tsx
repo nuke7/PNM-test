@@ -72,9 +72,18 @@ export default function Home() {
         />
 
         <div className="grid gap-6 md:grid-cols-2">
-          {filteredJobs.map((job) => (
-            <JobCard key={job.id} job={job} />
-          ))}
+        {filteredJobs.length > 0 ? (
+            filteredJobs.map((job) => (
+              <JobCard key={job.id} job={job} />
+            ))
+          ) : (
+            <div className="md:col-span-2 p-8 text-center bg-white rounded-lg shadow">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">No jobs found</h3>
+              <p className="text-gray-600">
+                No jobs match your selected filters. Try adjusting your location or industry selection.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import { Job } from '../types/job';
+import { decode } from 'html-entities';
+
 
 interface JobCardProps {
   job: Job;
@@ -9,7 +11,7 @@ interface JobCardProps {
 
 export const JobCard = ({ job }: JobCardProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-lg shadow-md p-[6px] md:p-6 hover:shadow-xl transition-shadow">
       <div className="flex items-start gap-4">
         {job.companyLogo && (
           <div className="w-16 h-16 relative">
@@ -38,7 +40,7 @@ export const JobCard = ({ job }: JobCardProps) => {
               </span>
             )}
           </div>
-          <p className="mt-3 text-gray-600">{job.jobExcerpt}</p>
+          <p className="mt-3 text-gray-600">{decode(job.jobExcerpt)}</p>
           {(job.annualSalaryMin || job.annualSalaryMax) && (
             <p className="mt-2 text-gray-700">
               Salary: {job.annualSalaryMin && `${job.annualSalaryMin}`}
