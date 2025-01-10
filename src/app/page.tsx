@@ -17,13 +17,7 @@ export default function Home() {
 
   const industries = useMemo(() => {
     if (!jobs) return [];
-    const uniqueIndustries = [] as string[];
-    jobs.forEach((job) => {
-      if (!uniqueIndustries.includes(job.jobIndustry[0])) {
-        uniqueIndustries.push(job.jobIndustry[0]);
-      }
-    });
-    return uniqueIndustries.sort();
+    return Array.from(new Set(jobs.map((job) => job.jobIndustry[0]))).sort();
   }, [jobs]);
 
   const filteredJobs = useMemo(() => {
