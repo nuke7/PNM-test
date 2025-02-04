@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { Job } from '../types/job';
 import { decode } from 'html-entities';
 
-
 interface JobCardProps {
   job: Job;
 }
@@ -25,7 +24,7 @@ export const JobCard = ({ job }: JobCardProps) => {
           </div>
         )}
         <div className="flex-1">
-          <h2 className="text-xl font-semibold text-gray-900">{job.jobTitle}</h2>
+          <h2 className="text-xl font-semibold text-gray-900">{decode(job.jobTitle)}</h2>
           <p className="text-gray-600 mt-1">{job.companyName}</p>
           <div className="mt-2 flex flex-wrap gap-2">
             <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
